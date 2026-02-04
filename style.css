@@ -8,19 +8,38 @@
 
 /* Color Variables - Permanent Dark Mode */
 :root {
-    /* Light / Ice Theme */
+    /* Light / Ice Theme (Default) */
     --primary: #f0f4f8;
-    /* Ice White Background */
+    /* Light Background */
     --secondary: #dfe6ed;
-    /* Light Grey/Blue for subtle elements */
+    /* Slightly darker background */
     --accent: #0a1f33;
-    /* Deep Navy (Old Primary) as Accent */
+    /* Deep Navy Accent */
     --text-main: #0a1f33;
     /* Deep Navy Text */
     --text-muted: #5e6c7e;
+    /* Muted Text */
     --card-bg: #ffffff;
     /* White Cards */
     --shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Theme Variables */
+[data-theme="dark"] {
+    --primary: #0a1f33;
+    /* Deep Navy Background */
+    --secondary: #112d4e;
+    /* Lighter Navy */
+    --accent: #d4a017;
+    /* Gold Accent */
+    --text-main: #e6f1ff;
+    /* Light Text */
+    --text-muted: #8892b0;
+    /* Muted Tech Text */
+    --card-bg: #112240;
+    /* Dark Cards */
+    --shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.7);
+
 }
 
 body {
@@ -74,6 +93,23 @@ header {
     /* Safari support */
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    background: transparent;
+    border: none;
+    color: var(--text-main);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 8px;
+    margin-left: 15px;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.theme-toggle:hover {
+    color: var(--accent);
+    transform: rotate(15deg);
 }
 
 .container {

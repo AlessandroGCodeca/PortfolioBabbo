@@ -1,188 +1,6 @@
-// --- Translations Dictionary (Condensed for brevity, assumed same content as before) ---
-const translations = {
-    "en": {
-        "nav_about": "About", "nav_experience": "Experience", "nav_skills": "Skills", "nav_contact": "Contact",
-        "hero_title": "Filippo Mario Codecà", "hero_subtitle_words": ["Senior Operations Manager", "Supply Chain Expert", "Crisis Management Specialist", "Lean Six Sigma Leader"],
-        "hero_desc": "Driving efficiency in Automotive, Plant Management, and Logistics Optimization across Europe.", "btn_contact": "Get in Touch", "btn_profile": "View Hogan Profile",
-        "sec_about_title": "Professional Profile", "sec_about_h3": "Senior Leader in Manufacturing",
-        "sec_about_p1": "Born in Milan and currently based in Slovakia, I am a seasoned manager with extensive experience in the automotive and manufacturing sectors. I specialize in <strong>Plant Management, Logistics, and Supply Chain optimization</strong>.",
-        "sec_about_p2": "My career is defined by flexibility and high technical focus, having successfully managed start-ups, restructuring projects, and interim management roles across Europe (Italy, Slovakia, Germany).",
-        "card_lang": "Languages", "card_edu": "Education", "sec_exp_title": "Career Journey",
-        "role_nig": "Coordinator / Site Manager", "desc_nig": "Supervising installation of production lines in the automotive sector. Managing daily team coordination, client relationships, and material availability.",
-        "role_jlr": "Senior Production Leader (T&F)", "desc_jlr": "Managed Trim & Final Operation zone (120 people). Drove SQDCPE metrics, safety compliance, and Lean manufacturing principles (Kaizen, 5S).",
-        "role_opel": "Manager Development", "desc_opel": "Study of chassis geometry and production process quality for the new Opel Grandland BEV project, focusing on \"Body Sides\".",
-        "role_ho": "Assistant Supervisor", "desc_ho": "Managed installation projects for Jeep Ineos Grenadier, Krone trailers, and Opel Grandland conveyor systems.",
-        "role_phoenix": "Supply Chain Director", "desc_phoenix": "Optimized biomass supply chain, reduced shipping costs, and managed international transport regulations (Air, Sea, Rail, Road).",
-        "role_brixia": "Plant Production & Logistics Manager", "desc_brixia": "Aluminium die casting for Bosch, Continental, Magna. Reorganized supply chain, reduced suppliers, and managed plant productivity.",
-        "role_scand": "Logistics & Purchasing Manager", "desc_scand": "Packaging manufacturing. Reduced raw material and energy purchase prices. Defined strategic supply objectives and managed warehouse accounting.",
-        "role_serio": "Operation Manager", "desc_serio": "Led the start-up phase: construction compliance, layout design, staff recruitment, machinery purchasing, and ISO 9001 implementation.",
-        "sec_skills_title": "Core Competencies", "filter_all": "All", "filter_mgmt": "Management", "filter_tech": "Technical", "filter_ind": "Industry",
-        "sk_supply": "Supply Chain Management", "sk_plant": "Plant Operations", "sk_lean": "Lean Manufacturing (Kaizen, 5S)", "sk_interim": "Interim Management",
-        "sk_auto": "Automotive Industry", "sk_log": "Logistics Optimization", "sk_crisis": "Crisis Management", "sk_sqdcpe": "SQDCPE Metrics", "sk_iso": "ISO 9001 / IATF",
-        "sk_sap": "SAP / AS400 / MS Office", "sk_cost": "Cost Reduction", "sk_start": "Start-up Leadership",
-        "sec_map_title": "International Experience", "sec_map_desc": "A track record of success across key European manufacturing hubs.", "sec_contact_title": "Contact Me"
-    },
-    "it": {
-        "nav_about": "Chi Sono", "nav_experience": "Esperienza", "nav_skills": "Competenze", "nav_contact": "Contatti",
-        "hero_title": "Filippo Mario Codecà",
-        "hero_subtitle_words": ["Manager Operativo Senior", "Esperto Supply Chain", "Specialista Crisis Management", "Leader Lean Six Sigma"],
-        "hero_desc": "Ottimizzazione dell'efficienza in automotive, gestione impianti e logistica in tutta Europa.",
-        "btn_contact": "Contattami", "btn_profile": "Vedi Profilo Hogan",
-        "sec_about_title": "Profilo Professionale", "sec_about_h3": "Leader Senior nel Manufacturing",
-        "sec_about_p1": "Nato a Milano e attualmente basato in Slovacchia, sono un manager esperto con vasta esperienza nei settori automotive e manifatturiero. Sono specializzato in <strong>Gestione Impianti, Logistica e Ottimizzazione Supply Chain</strong>.",
-        "sec_about_p2": "La mia carriera è definita da flessibilità e forte focus tecnico, avendo gestito con successo start-up, progetti di ristrutturazione e ruoli di interim management in tutta Europa (Italia, Slovacchia, Germania).",
-        "card_lang": "Lingue", "card_edu": "Formazione", "sec_exp_title": "Percorso Professionale",
-        "role_nig": "Coordinatore / Site Manager",
-        "desc_nig": "Supervisione installazione linee produttive nel settore automotive. Gestione coordinamento team, relazioni clienti e disponibilità materiali.",
-        "role_jlr": "Senior Production Leader (T&F)",
-        "desc_jlr": "Gestione zona Trim & Final Operation (120 persone). Implementazione metriche SQDCPE, conformità sicurezza e principi Lean (Kaizen, 5S).",
-        "role_opel": "Manager Development",
-        "desc_opel": "Studio geometria telaio e qualità processi produttivi per nuovo progetto Opel Grandland BEV, focus su \"Body Sides\".",
-        "role_ho": "Assistant Supervisor",
-        "desc_ho": "Gestione progetti installazione per Jeep Ineos Grenadier, rimorchi Krone e sistemi trasportatori Opel Grandland.",
-        "role_phoenix": "Direttore Supply Chain",
-        "desc_phoenix": "Ottimizzazione supply chain biomasse, riduzione costi spedizione e gestione normative trasporto internazionale (Aereo, Mare, Ferrovia, Gomma).",
-        "role_brixia": "Plant Production & Logistics Manager",
-        "desc_brixia": "Pressofusione alluminio per Bosch, Continental, Magna. Riorganizzazione supply chain, riduzione fornitori e gestione produttività impianto.",
-        "role_scand": "Logistics & Purchasing Manager",
-        "desc_scand": "Produzione packaging. Riduzione prezzi materie prime ed energia. Definizione obiettivi strategici e gestione contabilità magazzino.",
-        "role_serio": "Operation Manager",
-        "desc_serio": "Gestione fase start-up: conformità costruzione, progettazione layout, recruiting, acquisto macchinari e implementazione ISO 9001.",
-        "sec_skills_title": "Competenze Chiave", "filter_all": "Tutte", "filter_mgmt": "Management", "filter_tech": "Tecniche", "filter_ind": "Settoriali",
-        "sk_supply": "Supply Chain Management", "sk_plant": "Gestione Impianti", "sk_lean": "Lean Manufacturing (Kaizen, 5S)", "sk_interim": "Interim Management",
-        "sk_auto": "Industria Automotive", "sk_log": "Ottimizzazione Logistica", "sk_crisis": "Crisis Management", "sk_sqdcpe": "Metriche SQDCPE", "sk_iso": "ISO 9001 / IATF",
-        "sk_sap": "SAP / AS400 / MS Office", "sk_cost": "Riduzione Costi", "sk_start": "Leadership Start-up",
-        "sec_map_title": "Esperienza Internazionale", "sec_map_desc": "Track record di successi nei principali hub manifatturieri europei.", "sec_contact_title": "Contattami"
-    },
-    "sk": {
-        "nav_about": "O mne", "nav_experience": "Skúsenosti", "nav_skills": "Zručnosti", "nav_contact": "Kontakt",
-        "hero_title": "Filippo Mario Codecà",
-        "hero_subtitle_words": ["Senior Operations Manager", "Expert na Supply Chain", "Špecialista Crisis Management", "Lean Six Sigma Leader"],
-        "hero_desc": "Zvyšovanie efektivity v automotive, riadení závodov a optimalizácii logistiky po celej Európe.",
-        "btn_contact": "Kontaktujte ma", "btn_profile": "Zobraziť Hogan Profil",
-        "sec_about_title": "Profesionálny Profil", "sec_about_h3": "Senior Leader vo Výrobe",
-        "sec_about_p1": "Narodený v Miláne a momentálne pôsobiaci na Slovensku, som skúsený manažér s rozsiahlymi skúsenosťami v automotive a výrobnom sektore. Špecializujem sa na <strong>Riadenie Závodov, Logistiku a Optimalizáciu Supply Chain</strong>.",
-        "sec_about_p2": "Moja kariéra je definovaná flexibilitou a vysokým technickým zameraním, úspešne som riadil start-upy, reštrukturalizačné projekty a interim manažment po celej Európe (Taliansko, Slovensko, Nemecko).",
-        "card_lang": "Jazyky", "card_edu": "Vzdelanie", "sec_exp_title": "Kariérna Cesta",
-        "role_nig": "Koordinátor / Site Manager",
-        "desc_nig": "Supervízia inštalácie výrobných liniek v automotive sektore. Riadenie dennej koordinácie tímu, vzťahov s klientmi a dostupnosti materiálov.",
-        "role_jlr": "Senior Production Leader (T&F)",
-        "desc_jlr": "Riadenie zóny Trim & Final Operation (120 ľudí). Implementácia SQDCPE metrík, dodržiavanie bezpečnosti a Lean princípov (Kaizen, 5S).",
-        "role_opel": "Manager Development",
-        "desc_opel": "Štúdium geometrie podvozku a kvality výrobných procesov pre nový projekt Opel Grandland BEV, zameranie na \"Body Sides\".",
-        "role_ho": "Assistant Supervisor",
-        "desc_ho": "Riadenie inštalačných projektov pre Jeep Ineos Grenadier, Krone návesy a Opel Grandland dopravníkové systémy.",
-        "role_phoenix": "Riaditeľ Supply Chain",
-        "desc_phoenix": "Optimalizácia supply chain biomasy, zníženie nákladov na dopravu a riadenie medzinárodných dopravných predpisov (Letecká, Morská, Železničná, Cestná).",
-        "role_brixia": "Plant Production & Logistics Manager",
-        "desc_brixia": "Tlakové liatie hliníka pre Bosch, Continental, Magna. Reorganizácia supply chain, redukcia dodávateľov a riadenie produktivity závodu.",
-        "role_scand": "Logistics & Purchasing Manager",
-        "desc_scand": "Výroba obalov. Zníženie cien surovín a energií. Definovanie strategických dodávateľských cieľov a riadenie skladového účtovníctva.",
-        "role_serio": "Operation Manager",
-        "desc_serio": "Vedenie start-up fázy: dodržiavanie stavebných predpisov, návrh layoutu, nábor zamestnancov, nákup strojov a implementácia ISO 9001.",
-        "sec_skills_title": "Kľúčové Kompetencie", "filter_all": "Všetky", "filter_mgmt": "Manažment", "filter_tech": "Technické", "filter_ind": "Odvetvové",
-        "sk_supply": "Supply Chain Management", "sk_plant": "Riadenie Závodov", "sk_lean": "Lean Manufacturing (Kaizen, 5S)", "sk_interim": "Interim Management",
-        "sk_auto": "Automotive Priemysel", "sk_log": "Optimalizácia Logistiky", "sk_crisis": "Crisis Management", "sk_sqdcpe": "SQDCPE Metriky", "sk_iso": "ISO 9001 / IATF",
-        "sk_sap": "SAP / AS400 / MS Office", "sk_cost": "Znižovanie Nákladov", "sk_start": "Start-up Leadership",
-        "sec_map_title": "Medzinárodné Skúsenosti", "sec_map_desc": "Úspešná história v kľúčových európskych výrobných centrách.", "sec_contact_title": "Kontakt"
-    },
-    "de": {
-        "nav_about": "Über mich", "nav_experience": "Erfahrung", "nav_skills": "Kompetenzen", "nav_contact": "Kontakt",
-        "hero_title": "Filippo Mario Codecà",
-        "hero_subtitle_words": ["Senior Operations Manager", "Supply Chain Experte", "Crisis Management Spezialist", "Lean Six Sigma Leader"],
-        "hero_desc": "Effizienzsteigerung in Automotive, Werksleitung und Logistikoptimierung in ganz Europa.",
-        "btn_contact": "Kontakt aufnehmen", "btn_profile": "Hogan-Profil ansehen",
-        "sec_about_title": "Berufsprofil", "sec_about_h3": "Senior Leader in der Fertigung",
-        "sec_about_p1": "Geboren in Mailand und derzeit in der Slowakei ansässig, bin ich ein erfahrener Manager mit umfangreicher Erfahrung in der Automobil- und Fertigungsindustrie. Ich bin spezialisiert auf <strong>Werksleitung, Logistik und Supply Chain Optimierung</strong>.",
-        "sec_about_p2": "Meine Karriere ist geprägt von Flexibilität und hohem technischem Fokus. Ich habe erfolgreich Start-ups, Restrukturierungsprojekte und Interim-Management-Rollen in ganz Europa (Italien, Slowakei, Deutschland) geleitet.",
-        "card_lang": "Sprachen", "card_edu": "Ausbildung", "sec_exp_title": "Karriereweg",
-        "role_nig": "Koordinator / Site Manager",
-        "desc_nig": "Überwachung der Installation von Produktionslinien im Automobilsektor. Tägliche Teamkoordination, Kundenbeziehungen und Materialverfügbarkeit.",
-        "role_jlr": "Senior Production Leader (T&F)",
-        "desc_jlr": "Leitung der Trim & Final Operation Zone (120 Mitarbeiter). Umsetzung von SQDCPE-Metriken, Sicherheitskonformität und Lean-Prinzipien (Kaizen, 5S).",
-        "role_opel": "Manager Development",
-        "desc_opel": "Untersuchung der Fahrwerksgeometrie und Produktionsprozessqualität für das neue Opel Grandland BEV Projekt, Schwerpunkt \"Body Sides\".",
-        "role_ho": "Assistant Supervisor",
-        "desc_ho": "Leitung von Installationsprojekten für Jeep Ineos Grenadier, Krone-Anhänger und Opel Grandland Fördersysteme.",
-        "role_phoenix": "Supply Chain Director",
-        "desc_phoenix": "Optimierung der Biomasse-Lieferkette, Reduzierung der Versandkosten und Management internationaler Transportvorschriften (Luft, See, Schiene, Straße).",
-        "role_brixia": "Plant Production & Logistics Manager",
-        "desc_brixia": "Aluminiumdruckguss für Bosch, Continental, Magna. Reorganisation der Lieferkette, Lieferantenreduzierung und Werksproduk­tivitäts­management.",
-        "role_scand": "Logistics & Purchasing Manager",
-        "desc_scand": "Verpackungsherstellung. Senkung der Rohstoff- und Energiepreise. Definition strategischer Beschaffungsziele und Lagerbuchhaltung.",
-        "role_serio": "Operation Manager",
-        "desc_serio": "Leitung der Start-up-Phase: Bauvorschriften, Layout-Design, Personalrekrutierung, Maschinenkauf und ISO 9001 Implementierung.",
-        "sec_skills_title": "Kernkompetenzen", "filter_all": "Alle", "filter_mgmt": "Management", "filter_tech": "Technisch", "filter_ind": "Branche",
-        "sk_supply": "Supply Chain Management", "sk_plant": "Werksleitung", "sk_lean": "Lean Manufacturing (Kaizen, 5S)", "sk_interim": "Interim Management",
-        "sk_auto": "Automobilindustrie", "sk_log": "Logistikoptimierung", "sk_crisis": "Krisenmanagement", "sk_sqdcpe": "SQDCPE-Metriken", "sk_iso": "ISO 9001 / IATF",
-        "sk_sap": "SAP / AS400 / MS Office", "sk_cost": "Kostenreduzierung", "sk_start": "Start-up-Leadership",
-        "sec_map_title": "Internationale Erfahrung", "sec_map_desc": "Erfolgsgeschichte in wichtigen europäischen Fertigungszentren.", "sec_contact_title": "Kontakt"
-    },
-    "fr": {
-        "nav_about": "À propos", "nav_experience": "Expérience", "nav_skills": "Compétences", "nav_contact": "Contact",
-        "hero_title": "Filippo Mario Codecà",
-        "hero_subtitle_words": ["Senior Operations Manager", "Expert Supply Chain", "Spécialiste Crisis Management", "Leader Lean Six Sigma"],
-        "hero_desc": "Optimisation de l'efficacité dans l'automobile, la gestion d'usine et la logistique en Europe.",
-        "btn_contact": "Me contacter", "btn_profile": "Voir le profil Hogan",
-        "sec_about_title": "Profil Professionnel", "sec_about_h3": "Leader Senior dans l'Industrie",
-        "sec_about_p1": "Né à Milan et actuellement basé en Slovaquie, je suis un manager expérimenté avec une vaste expérience dans les secteurs automobile et manufacturier. Je suis spécialisé dans <strong>la Gestion d'Usine, la Logistique et l'Optimisation de la Supply Chain</strong>.",
-        "sec_about_p2": "Ma carrière est définie par la flexibilité et un fort accent technique, ayant géré avec succès des start-ups, des projets de restructuration et des rôles de management intérimaire à travers l'Europe (Italie, Slovaquie, Allemagne).",
-        "card_lang": "Langues", "card_edu": "Formation", "sec_exp_title": "Parcours Professionnel",
-        "role_nig": "Coordinateur / Site Manager",
-        "desc_nig": "Supervision de l'installation de lignes de production dans le secteur automobile. Gestion de la coordination quotidienne des équipes, relations clients et disponibilité des matériaux.",
-        "role_jlr": "Senior Production Leader (T&F)",
-        "desc_jlr": "Gestion de la zone Trim & Final Operation (120 personnes). Pilotage des métriques SQDCPE, conformité sécurité et principes Lean (Kaizen, 5S).",
-        "role_opel": "Manager Development",
-        "desc_opel": "Étude de la géométrie du châssis et qualité des processus de production pour le nouveau projet Opel Grandland BEV, focus sur \"Body Sides\".",
-        "role_ho": "Assistant Supervisor",
-        "desc_ho": "Gestion de projets d'installation pour Jeep Ineos Grenadier, remorques Krone et systèmes de convoyage Opel Grandland.",
-        "role_phoenix": "Directeur Supply Chain",
-        "desc_phoenix": "Optimisation de la chaîne d'approvisionnement biomasse, réduction des coûts d'expédition et gestion des réglementations de transport international (Aérien, Maritime, Ferroviaire, Routier).",
-        "role_brixia": "Plant Production & Logistics Manager",
-        "desc_brixia": "Moulage sous pression d'aluminium pour Bosch, Continental, Magna. Réorganisation de la supply chain, réduction des fournisseurs et gestion de la productivité de l'usine.",
-        "role_scand": "Logistics & Purchasing Manager",
-        "desc_scand": "Fabrication d'emballages. Réduction des prix des matières premières et de l'énergie. Définition d'objectifs stratégiques et gestion de la comptabilité d'entrepôt.",
-        "role_serio": "Operation Manager",
-        "desc_serio": "Direction de la phase start-up: conformité construction, conception du layout, recrutement, achat de machines et implémentation ISO 9001.",
-        "sec_skills_title": "Compétences Clés", "filter_all": "Toutes", "filter_mgmt": "Management", "filter_tech": "Techniques", "filter_ind": "Sectorielles",
-        "sk_supply": "Supply Chain Management", "sk_plant": "Gestion d'Usine", "sk_lean": "Lean Manufacturing (Kaizen, 5S)", "sk_interim": "Management Intérimaire",
-        "sk_auto": "Industrie Automobile", "sk_log": "Optimisation Logistique", "sk_crisis": "Gestion de Crise", "sk_sqdcpe": "Métriques SQDCPE", "sk_iso": "ISO 9001 / IATF",
-        "sk_sap": "SAP / AS400 / MS Office", "sk_cost": "Réduction des Coûts", "sk_start": "Leadership Start-up",
-        "sec_map_title": "Expérience Internationale", "sec_map_desc": "Historique de réussites dans les principaux centres manufacturiers européens.", "sec_contact_title": "Contact"
-    },
-    "es": {
-        "nav_about": "Acerca de", "nav_experience": "Experiencia", "nav_skills": "Habilidades", "nav_contact": "Contacto",
-        "hero_title": "Filippo Mario Codecà",
-        "hero_subtitle_words": ["Senior Operations Manager", "Experto Supply Chain", "Especialista Crisis Management", "Líder Lean Six Sigma"],
-        "hero_desc": "Optimización de eficiencia en automoción, gestión de plantas y logística en Europa.",
-        "btn_contact": "Contactar", "btn_profile": "Ver perfil Hogan",
-        "sec_about_title": "Perfil Profesional", "sec_about_h3": "Líder Senior en Fabricación",
-        "sec_about_p1": "Nacido en Milán y actualmente basado en Eslovaquia, soy un gerente experimentado con amplia experiencia en los sectores automotriz y manufacturero. Me especializo en <strong>Gestión de Plantas, Logística y Optimización de Supply Chain</strong>.",
-        "sec_about_p2": "Mi carrera se define por flexibilidad y alto enfoque técnico, habiendo gestionado con éxito start-ups, proyectos de reestructuración y roles de gestión interina en toda Europa (Italia, Eslovaquia, Alemania).",
-        "card_lang": "Idiomas", "card_edu": "Educación", "sec_exp_title": "Trayectoria Profesional",
-        "role_nig": "Coordinador / Site Manager",
-        "desc_nig": "Supervisión de instalación de líneas de producción en el sector automotriz. Gestión de coordinación diaria de equipos, relaciones con clientes y disponibilidad de materiales.",
-        "role_jlr": "Senior Production Leader (T&F)",
-        "desc_jlr": "Gestión de zona Trim & Final Operation (120 personas). Implementación de métricas SQDCPE, cumplimiento de seguridad y principios Lean (Kaizen, 5S).",
-        "role_opel": "Manager Development",
-        "desc_opel": "Estudio de geometría de chasis y calidad de procesos de producción para nuevo proyecto Opel Grandland BEV, enfoque en \"Body Sides\".",
-        "role_ho": "Assistant Supervisor",
-        "desc_ho": "Gestión de proyectos de instalación para Jeep Ineos Grenadier, remolques Krone y sistemas transportadores Opel Grandland.",
-        "role_phoenix": "Director Supply Chain",
-        "desc_phoenix": "Optimización de cadena de suministro de biomasa, reducción de costos de envío y gestión de regulaciones de transporte internacional (Aéreo, Marítimo, Ferroviario, Terrestre).",
-        "role_brixia": "Plant Production & Logistics Manager",
-        "desc_brixia": "Fundición de aluminio a presión para Bosch, Continental, Magna. Reorganización de supply chain, reducción de proveedores y gestión de productividad de planta.",
-        "role_scand": "Logistics & Purchasing Manager",
-        "desc_scand": "Fabricación de embalajes. Reducción de precios de materias primas y energía. Definición de objetivos estratégicos y gestión de contabilidad de almacén.",
-        "role_serio": "Operation Manager",
-        "desc_serio": "Dirección de fase start-up: cumplimiento de construcción, diseño de layout, reclutamiento de personal, compra de maquinaria e implementación ISO 9001.",
-        "sec_skills_title": "Competencias Clave", "filter_all": "Todas", "filter_mgmt": "Gestión", "filter_tech": "Técnicas", "filter_ind": "Sectoriales",
-        "sk_supply": "Supply Chain Management", "sk_plant": "Gestión de Plantas", "sk_lean": "Lean Manufacturing (Kaizen, 5S)", "sk_interim": "Gestión Interina",
-        "sk_auto": "Industria Automotriz", "sk_log": "Optimización Logística", "sk_crisis": "Gestión de Crisis", "sk_sqdcpe": "Métricas SQDCPE", "sk_iso": "ISO 9001 / IATF",
-        "sk_sap": "SAP / AS400 / MS Office", "sk_cost": "Reducción de Costos", "sk_start": "Liderazgo Start-up",
-        "sec_map_title": "Experiencia Internacional", "sec_map_desc": "Historial de éxitos en centros manufactureros clave de Europa.", "sec_contact_title": "Contacto"
-    }
-};
+// --- Translations Dictionary ---
+// Moved to translations.js for better maintainability
+
 
 // --- DOM Elements ---
 const hamburger = document.querySelector('.hamburger');
@@ -191,6 +9,42 @@ const sections = document.querySelectorAll('.fade-in-section');
 const progressBar = document.getElementById('progressBar');
 const filterBtns = document.querySelectorAll('.filter-btn');
 const skillTags = document.querySelectorAll('.skill-tag');
+
+// --- Theme Toggle ---
+const themeToggle = document.getElementById('themeToggle');
+const body = document.body;
+const icon = themeToggle ? themeToggle.querySelector('i') : null;
+
+// Check local storage or system preference
+const currentTheme = localStorage.getItem('theme');
+if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    if (currentTheme === 'dark' && icon) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+    }
+}
+
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        let theme = document.documentElement.getAttribute('data-theme');
+        if (theme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+            if (icon) {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+            if (icon) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        }
+    });
+}
 
 // --- Mobile Menu ---
 if (hamburger) {
@@ -485,7 +339,7 @@ const langOptions = document.querySelectorAll('.lang-option');
 const langFlags = {
     'en': '🇬🇧 EN',
     'it': '🇮🇹 IT',
-    'sk': '🇸�� SK',
+    'sk': '🇸🇰 SK',
     'de': '🇩🇪 DE',
     'fr': '🇫🇷 FR',
     'es': '🇪🇸 ES'
