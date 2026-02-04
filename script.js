@@ -1,6 +1,5 @@
 // --- Translations Dictionary ---
-// Moved to translations.js for better maintainability
-
+// Moved to translations.js to keep this file clean
 
 // --- DOM Elements ---
 const hamburger = document.querySelector('.hamburger');
@@ -9,8 +8,6 @@ const sections = document.querySelectorAll('.fade-in-section');
 const progressBar = document.getElementById('progressBar');
 const filterBtns = document.querySelectorAll('.filter-btn');
 const skillTags = document.querySelectorAll('.skill-tag');
-
-
 
 // --- Mobile Menu ---
 if (hamburger) {

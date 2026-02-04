@@ -8,23 +8,20 @@
 
 /* Color Variables - Permanent Dark Mode */
 :root {
-    /* Dark Theme (Default) */
-    --primary: #0a1f33;
-    /* Deep Navy Background */
-    --secondary: #112d4e;
-    /* Lighter Navy */
-    --accent: #d4a017;
-    /* Gold Accent */
-    --text-main: #e6f1ff;
-    /* Light Text */
-    --text-muted: #8892b0;
-    /* Muted Tech Text */
-    --card-bg: #112240;
-    /* Dark Cards */
-    --shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.7);
+    /* Light / Ice Theme */
+    --primary: #f0f4f8;
+    /* Ice White Background */
+    --secondary: #dfe6ed;
+    /* Light Grey/Blue for subtle elements */
+    --accent: #0a1f33;
+    /* Deep Navy (Old Primary) as Accent */
+    --text-main: #0a1f33;
+    /* Deep Navy Text */
+    --text-muted: #5e6c7e;
+    --card-bg: #ffffff;
+    /* White Cards */
+    --shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.1);
 }
-
-
 
 body {
     line-height: 1.6;
@@ -78,8 +75,6 @@ header {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
-
-
 
 .container {
     width: 90%;
