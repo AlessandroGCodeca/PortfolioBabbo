@@ -583,88 +583,130 @@ section {
 
     /* Container and spacing adjustments */
     .container {
-        width: 95%;
+        width: 92%;
+        padding: 0 10px;
     }
 
     section {
-        padding: 50px 0;
+        padding: 60px 0;
     }
 
     /* Typography improvements for readability */
     body {
         font-size: 16px;
-        line-height: 1.7;
+        line-height: 1.6;
     }
 
-    /* Hero section mobile optimization */
-    .hero {
-        height: auto;
-        min-height: 70vh;
-        padding: 40px 20px;
+    /* Header & Navigation */
+    header {
+        padding: 10px 0;
+        backdrop-filter: blur(15px);
     }
 
-    .hero h1 {
-        font-size: 2rem;
-        line-height: 1.2;
-        margin-bottom: 15px;
-    }
-
-    .hero h2 {
-        font-size: 1.3rem;
-        margin-bottom: 15px;
-    }
-
-    .hero p {
-        font-size: 0.95rem;
-        margin-bottom: 20px;
-    }
-
-    /* Touch-friendly button sizing (min 44px height) */
-    .btn {
-        padding: 14px 30px;
-        font-size: 1rem;
-        min-height: 44px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    /* Navigation improvements */
     .logo {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
+        z-index: 1001;
+        /* Ensure logo stays above mobile menu if needed, or menu covers it */
     }
 
     .hamburger {
-        font-size: 1.8rem;
+        display: block;
+        font-size: 1.6rem;
         padding: 10px;
-        min-width: 44px;
-        min-height: 44px;
+        z-index: 1001;
+        width: 44px;
+        /* Minimum touch target */
+        height: 44px;
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
     .nav-links {
-        top: 65px;
-        padding: 30px 0;
-        gap: 0;
+        position: fixed;
+        background: rgba(255, 255, 255, 0.98);
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transform: translateX(100%);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1000;
+        padding-bottom: 50px;
+        /* Space for bottom interaction */
+        box-shadow: none;
+        /* Full screen doesn't need shadow */
+    }
+
+    .nav-links.active {
+        transform: translateX(0%);
     }
 
     .nav-links li {
         width: 100%;
         text-align: center;
-        padding: 15px 0;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        margin: 15px 0;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .nav-links.active li {
+        opacity: 1;
+        transform: translateY(0);
+        /* Stagger effect could be done via JS, but simple transition here works */
     }
 
     .nav-links a {
-        font-size: 1.1rem;
-        padding: 10px 20px;
-        display: block;
-        min-height: 44px;
-        display: flex;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--text-main);
+        display: inline-block;
+        padding: 10px;
+    }
+
+    /* Hero section mobile optimization */
+    .hero {
+        height: auto;
+        min-height: 85vh;
+        /* slightly reduced from 90vh/100vh */
+        padding: 100px 20px 60px;
+        /* Top padding accounts for fixed header */
         align-items: center;
-        justify-content: center;
+    }
+
+    .hero-content {
+        margin-top: 20px;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+        line-height: 1.1;
+        margin-bottom: 15px;
+    }
+
+    .hero h2 {
+        font-size: 1.25rem;
+        margin-bottom: 20px;
+        min-height: auto;
+        /* Remove fixed height constraint allowing wrap */
+    }
+
+    .hero p {
+        font-size: 1rem;
+        margin-bottom: 25px;
+        padding: 0 10px;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 280px;
+        padding: 16px 30px;
+        /* Larger touch area */
+        font-size: 1.1rem;
     }
 
     /* KPI Section Mobile */
@@ -675,27 +717,33 @@ section {
 
     .kpi-grid {
         grid-template-columns: repeat(2, 1fr);
+        /* 2x2 grid */
         gap: 20px;
     }
 
     .kpi-number {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
     }
 
     .kpi-label {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
     }
 
     /* Tech Marquee Mobile */
     .tech-item {
-        font-size: 1rem;
-        margin: 0 20px;
+        font-size: 1.1rem;
+        margin: 0 15px;
+    }
+
+    .tech-item i {
+        font-size: 1.3rem;
+        /* Slightly smaller icons */
     }
 
     /* Section titles */
     .section-title {
-        font-size: 1.6rem;
-        margin-bottom: 30px;
+        font-size: 1.8rem;
+        margin-bottom: 40px;
     }
 
     /* About section */
@@ -704,31 +752,46 @@ section {
         gap: 30px;
     }
 
-    .about-text p {
-        font-size: 0.95rem;
+    .about-text h3 {
+        font-size: 1.3rem;
     }
 
     /* Timeline mobile optimization */
+    .timeline {
+        padding-left: 0;
+    }
+
     .timeline::after {
-        left: 31px;
+        left: 20px;
+        /* Move line to the left */
+        margin-left: 0;
     }
 
     .job-card {
         width: 100%;
-        padding-left: 70px;
-        padding-right: 15px;
-        padding-top: 5px;
-        padding-bottom: 5px;
+        padding-left: 50px;
+        /* Space for the line */
+        padding-right: 0;
+        padding-bottom: 25px;
+        margin-bottom: 0;
+    }
+
+    .job-card.left,
+    .job-card.right {
+        left: 0;
+        text-align: left;
+        /* Align all text left */
     }
 
     .job-card::after {
-        left: 21px;
-        width: 20px;
-        height: 20px;
+        left: 11px;
+        /* Align dot with line */
+        right: auto;
     }
 
-    .left {
-        text-align: left;
+    .right::after {
+        left: 11px;
+        /* Fix for right side items */
     }
 
     .content {
@@ -737,86 +800,85 @@ section {
 
     .role-title {
         font-size: 1.1rem;
-        line-height: 1.4;
-    }
-
-    .company-name {
-        font-size: 0.9rem;
     }
 
     .date {
         font-size: 0.85rem;
     }
 
-    /* Info cards */
-    .info-cards {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-
     /* Skills mobile */
     .skills-container {
         gap: 10px;
+        justify-content: flex-start;
+        /* Left align can be cleaner on messy wraps, or center */
     }
 
     .skill-tag {
-        padding: 10px 18px;
+        padding: 8px 16px;
         font-size: 0.9rem;
+        flex-grow: 1;
+        /* Stretch to fill gaps */
+        text-align: center;
     }
 
     /* Map section mobile */
     #map {
-        height: 300px !important;
+        height: 350px !important;
     }
 
-    /* Language switcher */
-    .lang-switcher {
-        margin: 10px 0;
-        justify-content: center;
-    }
-
-    .lang-btn {
-        padding: 8px 12px;
-        font-size: 0.9rem;
-        min-height: 44px;
-    }
-
-    /* Sidebar mobile layout */
+    /* Sidebar / Right Column in Grid */
     .main-grid {
-        gap: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    .right-column {
+        width: 100%;
+        display: block;
+        /* Ensure it stacks */
     }
 
     .sidebar-section {
-        padding: 20px;
+        margin-bottom: 30px;
+        padding: 25px;
+    }
+
+    /* Language switcher mobile adjustments */
+    .lang-switcher {
+        justify-content: center;
         margin-bottom: 20px;
     }
 
-    .sidebar-section h2 {
-        font-size: 1rem;
+    /* Footer / Contact Mobile */
+    .social-icons {
+        justify-content: center !important;
+        margin-top: 20px;
     }
 
-    /* Language progress bars */
-    .lang-header {
-        font-size: 0.95rem;
+    .contact-info {
+        text-align: center;
     }
 
-    /* Contact items - touch friendly */
     .contact-item {
+        justify-content: center;
         padding: 12px 0;
         font-size: 1rem;
     }
 
+    /* Social Icons Mobile */
     .social-icons a {
         font-size: 2rem;
         padding: 10px;
         min-width: 44px;
+        /* Touch target */
         min-height: 44px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
     }
 
-    /* Language dropdown mobile */
+    /* Language Dropdown Mobile */
     .lang-dropdown-btn {
         min-height: 44px;
         padding: 10px 15px;
@@ -831,23 +893,47 @@ section {
         font-size: 1rem;
     }
 
-    /* Improve tap targets for all interactive elements */
+    /* Global Mobile Fixes */
     button,
     a,
     input,
     select,
     textarea {
         min-height: 44px;
+        /* Accessibility */
     }
 
-    /* Reduce animations on mobile for better performance */
     * {
         animation-duration: 0.5s !important;
+        /* Performance */
     }
 
-    /* Tilt effect disabled on mobile */
     .kpi-item[data-tilt] {
         transform: none !important;
+        /* Disable tilt */
+    }
+}
+
+/* Extra small devices */
+@media screen and (max-width: 380px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .kpi-grid {
+        gap: 15px;
+    }
+
+    .job-card {
+        padding-left: 40px;
+    }
+
+    .timeline::after {
+        left: 15px;
+    }
+
+    .job-card::after {
+        left: 6px;
     }
 }
 
