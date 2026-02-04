@@ -8,24 +8,7 @@
 
 /* Color Variables - Permanent Dark Mode */
 :root {
-    /* Light / Ice Theme (Default) */
-    --primary: #f0f4f8;
-    /* Light Background */
-    --secondary: #dfe6ed;
-    /* Slightly darker background */
-    --accent: #0a1f33;
-    /* Deep Navy Accent */
-    --text-main: #0a1f33;
-    /* Deep Navy Text */
-    --text-muted: #5e6c7e;
-    /* Muted Text */
-    --card-bg: #ffffff;
-    /* White Cards */
-    --shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.1);
-}
-
-/* Dark Theme Variables */
-[data-theme="dark"] {
+    /* Dark Theme (Default) */
     --primary: #0a1f33;
     /* Deep Navy Background */
     --secondary: #112d4e;
@@ -39,8 +22,9 @@
     --card-bg: #112240;
     /* Dark Cards */
     --shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.7);
-
 }
+
+
 
 body {
     line-height: 1.6;
@@ -95,22 +79,7 @@ header {
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Theme Toggle Button */
-.theme-toggle {
-    background: transparent;
-    border: none;
-    color: var(--text-main);
-    font-size: 1.2rem;
-    cursor: pointer;
-    padding: 8px;
-    margin-left: 15px;
-    transition: color 0.3s, transform 0.3s;
-}
 
-.theme-toggle:hover {
-    color: var(--accent);
-    transform: rotate(15deg);
-}
 
 .container {
     width: 90%;

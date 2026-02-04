@@ -10,41 +10,7 @@ const progressBar = document.getElementById('progressBar');
 const filterBtns = document.querySelectorAll('.filter-btn');
 const skillTags = document.querySelectorAll('.skill-tag');
 
-// --- Theme Toggle ---
-const themeToggle = document.getElementById('themeToggle');
-const body = document.body;
-const icon = themeToggle ? themeToggle.querySelector('i') : null;
 
-// Check local storage or system preference
-const currentTheme = localStorage.getItem('theme');
-if (currentTheme) {
-    document.documentElement.setAttribute('data-theme', currentTheme);
-    if (currentTheme === 'dark' && icon) {
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-    }
-}
-
-if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-        let theme = document.documentElement.getAttribute('data-theme');
-        if (theme === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'light');
-            localStorage.setItem('theme', 'light');
-            if (icon) {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-            }
-        } else {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            localStorage.setItem('theme', 'dark');
-            if (icon) {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            }
-        }
-    });
-}
 
 // --- Mobile Menu ---
 if (hamburger) {
