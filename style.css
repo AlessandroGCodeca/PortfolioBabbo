@@ -572,12 +572,143 @@ section {
     transform: none;
 }
 
-/* Responsive */
+/* Responsive - Enhanced Mobile Optimization */
 @media screen and (max-width: 768px) {
-    .about-grid {
-        grid-template-columns: 1fr;
+
+    /* Hide custom cursor elements on mobile/touch devices */
+    .cursor,
+    .cursor2 {
+        display: none !important;
     }
 
+    /* Container and spacing adjustments */
+    .container {
+        width: 95%;
+    }
+
+    section {
+        padding: 50px 0;
+    }
+
+    /* Typography improvements for readability */
+    body {
+        font-size: 16px;
+        line-height: 1.7;
+    }
+
+    /* Hero section mobile optimization */
+    .hero {
+        height: auto;
+        min-height: 70vh;
+        padding: 40px 20px;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+        line-height: 1.2;
+        margin-bottom: 15px;
+    }
+
+    .hero h2 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+
+    .hero p {
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+    }
+
+    /* Touch-friendly button sizing (min 44px height) */
+    .btn {
+        padding: 14px 30px;
+        font-size: 1rem;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Navigation improvements */
+    .logo {
+        font-size: 1.3rem;
+    }
+
+    .hamburger {
+        font-size: 1.8rem;
+        padding: 10px;
+        min-width: 44px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-links {
+        top: 65px;
+        padding: 30px 0;
+        gap: 0;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+        padding: 15px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-links a {
+        font-size: 1.1rem;
+        padding: 10px 20px;
+        display: block;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* KPI Section Mobile */
+    .kpi-section {
+        padding: 40px 0;
+        margin-top: 0;
+    }
+
+    .kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .kpi-number {
+        font-size: 2.5rem;
+    }
+
+    .kpi-label {
+        font-size: 0.85rem;
+    }
+
+    /* Tech Marquee Mobile */
+    .tech-item {
+        font-size: 1rem;
+        margin: 0 20px;
+    }
+
+    /* Section titles */
+    .section-title {
+        font-size: 1.6rem;
+        margin-bottom: 30px;
+    }
+
+    /* About section */
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .about-text p {
+        font-size: 0.95rem;
+    }
+
+    /* Timeline mobile optimization */
     .timeline::after {
         left: 31px;
     }
@@ -585,28 +716,187 @@ section {
     .job-card {
         width: 100%;
         padding-left: 70px;
-        padding-right: 25px;
+        padding-right: 15px;
+        padding-top: 5px;
+        padding-bottom: 5px;
     }
 
     .job-card::after {
         left: 21px;
+        width: 20px;
+        height: 20px;
     }
 
     .left {
         text-align: left;
     }
 
+    .content {
+        padding: 20px;
+    }
+
+    .role-title {
+        font-size: 1.1rem;
+        line-height: 1.4;
+    }
+
+    .company-name {
+        font-size: 0.9rem;
+    }
+
+    .date {
+        font-size: 0.85rem;
+    }
+
+    /* Info cards */
     .info-cards {
         grid-template-columns: 1fr;
+        gap: 15px;
     }
 
-    .hero h1 {
-        font-size: 2.5rem;
+    /* Skills mobile */
+    .skills-container {
+        gap: 10px;
     }
 
+    .skill-tag {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+    }
+
+    /* Map section mobile */
+    #map {
+        height: 300px !important;
+    }
+
+    /* Language switcher */
     .lang-switcher {
         margin: 10px 0;
         justify-content: center;
+    }
+
+    .lang-btn {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+        min-height: 44px;
+    }
+
+    /* Sidebar mobile layout */
+    .main-grid {
+        gap: 40px;
+    }
+
+    .sidebar-section {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .sidebar-section h2 {
+        font-size: 1rem;
+    }
+
+    /* Language progress bars */
+    .lang-header {
+        font-size: 0.95rem;
+    }
+
+    /* Contact items - touch friendly */
+    .contact-item {
+        padding: 12px 0;
+        font-size: 1rem;
+    }
+
+    .social-icons a {
+        font-size: 2rem;
+        padding: 10px;
+        min-width: 44px;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Language dropdown mobile */
+    .lang-dropdown-btn {
+        min-height: 44px;
+        padding: 10px 15px;
+    }
+
+    .lang-dropdown-menu {
+        min-width: 200px;
+    }
+
+    .lang-option {
+        padding: 15px 20px;
+        font-size: 1rem;
+    }
+
+    /* Improve tap targets for all interactive elements */
+    button,
+    a,
+    input,
+    select,
+    textarea {
+        min-height: 44px;
+    }
+
+    /* Reduce animations on mobile for better performance */
+    * {
+        animation-duration: 0.5s !important;
+    }
+
+    /* Tilt effect disabled on mobile */
+    .kpi-item[data-tilt] {
+        transform: none !important;
+    }
+}
+
+/* Small mobile phones (iPhone SE, etc.) */
+@media screen and (max-width: 375px) {
+    .hero h1 {
+        font-size: 1.75rem;
+    }
+
+    .hero h2 {
+        font-size: 1.1rem;
+    }
+
+    .kpi-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .tech-item {
+        font-size: 0.9rem;
+        margin: 0 15px;
+    }
+
+    .section-title {
+        font-size: 1.4rem;
+    }
+
+    .container {
+        width: 92%;
+    }
+}
+
+/* Tablet landscape optimization */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        width: 92%;
+    }
+
+    .main-grid {
+        grid-template-columns: 2fr 1fr;
+        gap: 40px;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .kpi-grid {
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
