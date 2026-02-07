@@ -8,6 +8,26 @@
         content="Portfolio of Filippo Mario Codecà - Senior Operations & Supply Chain Manager specializing in automotive and lean manufacturing.">
     <title>Filippo Mario Codecà | Senior Operations & Supply Chain Manager</title>
 
+    <!-- Security Headers (OWASP Best Practices) -->
+    <!-- Content Security Policy: Prevents XSS by restricting allowed sources -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://unpkg.com;
+        style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://unpkg.com https://fonts.googleapis.com;
+        font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com;
+        img-src 'self' data: https: blob:;
+        connect-src 'self' https://*.basemaps.cartocdn.com https://*.tile.openstreetmap.org;
+        frame-ancestors 'none';
+        base-uri 'self';
+        form-action 'self';
+    ">
+    <!-- Prevent MIME type sniffing -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <!-- Control referrer information -->
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <!-- Prevent clickjacking -->
+    <meta http-equiv="X-Frame-Options" content="DENY">
+
     <!-- Social Media / SEO Tags -->
     <meta property="og:title" content="Filippo Mario Codecà | Senior Operations Manager">
     <meta property="og:description"
@@ -18,325 +38,346 @@
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
 
-    <!-- CSS Links -->
+    <!-- CSS Links with Subresource Integrity (SRI) -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="language-selector.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Font Awesome with SRI hash -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <!-- Leaflet CSS with SRI hash -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 </head>
 
-<div class="cursor"></div>
-<div class="cursor2"></div>
+<body>
 
-<header>
-    <div class="container">
-        <nav>
-            <div class="logo">FMC<span>.</span></div>
+    <div class="cursor"></div>
+    <div class="cursor2"></div>
 
-            <div style="display: flex; align-items: center; gap: 20px;">
-                <!-- Mobile Hamburger -->
-                <div class="hamburger" aria-label="Toggle navigation menu" role="button" tabindex="0">
-                    <i class="fas fa-bars"></i>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">FMC<span>.</span></div>
+
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <!-- Mobile Hamburger -->
+                    <div class="hamburger" aria-label="Toggle navigation menu" role="button" tabindex="0">
+                        <i class="fas fa-bars"></i>
+                    </div>
+
+                    <ul class="nav-links">
+                        <li><a href="#about" data-i18n="nav_about">About</a></li>
+                        <li><a href="#experience" data-i18n="nav_experience">Experience</a></li>
+                        <li><a href="#skills" data-i18n="nav_skills">Skills</a></li>
+                        <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+                        <!-- Language Dropdown -->
+                        <li class="language-selector">
+                            <button class="lang-dropdown-btn" id="langDropdownBtn" aria-label="Select language">
+                                <span class="current-lang">🇬🇧 EN</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="lang-dropdown-menu" id="langDropdownMenu">
+                                <button class="lang-option active" data-lang="en">🇬🇧 English</button>
+                                <button class="lang-option" data-lang="it">🇮🇹 Italian</button>
+                                <button class="lang-option" data-lang="sk">🇸🇰 Slovak</button>
+                                <button class="lang-option" data-lang="de">🇩🇪 German</button>
+                                <button class="lang-option" data-lang="fr">🇫🇷 French</button>
+                                <button class="lang-option" data-lang="es">🇪🇸 Spanish</button>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
+            </nav>
+        </div>
+    </header>
 
-                <ul class="nav-links">
-                    <li><a href="#about" data-i18n="nav_about">About</a></li>
-                    <li><a href="#experience" data-i18n="nav_experience">Experience</a></li>
-                    <li><a href="#skills" data-i18n="nav_skills">Skills</a></li>
-                    <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
-                    <!-- Language Dropdown -->
-                    <li class="language-selector">
-                        <button class="lang-dropdown-btn" id="langDropdownBtn" aria-label="Select language">
-                            <span class="current-lang">🇬🇧 EN</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="lang-dropdown-menu" id="langDropdownMenu">
-                            <button class="lang-option active" data-lang="en">🇬🇧 English</button>
-                            <button class="lang-option" data-lang="it">🇮🇹 Italian</button>
-                            <button class="lang-option" data-lang="sk">🇸🇰 Slovak</button>
-                            <button class="lang-option" data-lang="de">🇩🇪 German</button>
-                            <button class="lang-option" data-lang="fr">🇫🇷 French</button>
-                            <button class="lang-option" data-lang="es">🇪🇸 Spanish</button>
+    <section class="hero">
+        <!-- Interactive Background -->
+        <canvas id="canvas1"></canvas>
+
+        <div class="container hero-content">
+            <p class="dynamic-greeting"
+                style="font-size: 1.2rem; margin-bottom: 10px; color: var(--accent); font-weight: 600;"></p>
+            <h1 data-i18n="hero_title">Filippo Mario Codecà</h1>
+            <h2><span class="txt-type" data-wait="3000"
+                    data-words='["Senior Operations Manager", "Supply Chain Expert", "Crisis Management Specialist", "Lean Six Sigma Leader"]'></span>
+            </h2>
+            <p data-i18n="hero_desc">Driving efficiency in Automotive, Plant Management, and Logistics Optimization
+                across Europe.</p>
+            <div style="display: flex; gap: 15px; justify-content: center;">
+                <a href="#contact" class="btn" data-i18n="btn_contact">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Marquee -->
+    <div class="tech-marquee">
+        <div class="tech-track">
+            <div class="tech-item"><i class="fas fa-file-excel"></i> MS Excel Expert</div>
+            <div class="tech-item"><i class="fas fa-cogs"></i> SAP ERP</div>
+            <div class="tech-item"><i class="fas fa-drafting-compass"></i> AutoCAD</div>
+            <div class="tech-item"><i class="fab fa-salesforce"></i> Salesforce</div>
+            <div class="tech-item"><i class="fas fa-database"></i> AS400</div>
+            <div class="tech-item"><i class="fas fa-project-diagram"></i> MS Project</div>
+            <div class="tech-item"><i class="fas fa-chart-line"></i> PowerBI</div>
+            <div class="tech-item"><i class="fas fa-industry"></i> Lean Six Sigma</div>
+            <div class="tech-item"><i class="fas fa-shipping-fast"></i> JIT / JIS</div>
+            <!-- Duplicate for fluid loop -->
+            <div class="tech-item"><i class="fas fa-file-excel"></i> MS Excel Expert</div>
+            <div class="tech-item"><i class="fas fa-cogs"></i> SAP ERP</div>
+            <div class="tech-item"><i class="fas fa-drafting-compass"></i> AutoCAD</div>
+            <div class="tech-item"><i class="fab fa-salesforce"></i> Salesforce</div>
+            <div class="tech-item"><i class="fas fa-database"></i> AS400</div>
+            <div class="tech-item"><i class="fas fa-project-diagram"></i> MS Project</div>
+            <div class="tech-item"><i class="fas fa-chart-line"></i> PowerBI</div>
+            <div class="tech-item"><i class="fas fa-industry"></i> Lean Six Sigma</div>
+            <div class="tech-item"><i class="fas fa-shipping-fast"></i> JIT / JIS</div>
+        </div>
+    </div>
+
+    <!-- KPI Section (Impact by the Numbers) -->
+    <section class="kpi-section fade-in-section">
+        <div class="container">
+            <div class="kpi-grid">
+                <div class="kpi-item" data-tilt>
+                    <div class="kpi-number" data-target="15">0</div>
+                    <div class="kpi-label">Years Experience</div>
+                </div>
+                <div class="kpi-item" data-tilt>
+                    <div class="kpi-number" data-target="120">0</div>
+                    <div class="kpi-label">Team Size Managed</div>
+                </div>
+                <div class="kpi-item" data-tilt>
+                    <div class="kpi-number" data-target="3">0</div>
+                    <div class="kpi-label">Countries</div>
+                </div>
+                <div class="kpi-item" data-tilt>
+                    <div class="kpi-number" data-target="8">0</div>
+                    <div class="kpi-label">Leadership Roles</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Grid -->
+    <div class="container main-grid">
+
+        <!-- Left Column: Primary Content -->
+        <div class="left-column">
+
+            <section id="about" class="fade-in-section">
+                <h2 class="section-title" data-i18n="sec_about_title">Professional Profile</h2>
+                <div class="about-text">
+                    <h3 data-i18n="sec_about_h3" style="color: var(--text-main); margin-bottom: 15px;">Senior Leader in
+                        Manufacturing</h3>
+                    <p data-i18n="sec_about_p1">Born in Milan and currently based in Slovakia, I am a seasoned manager
+                        with extensive experience
+                        in the automotive and manufacturing sectors. I specialize in <strong>Plant Management,
+                            Logistics, and Supply Chain optimization</strong>.</p>
+                    <br>
+                    <p data-i18n="sec_about_p2">My career is defined by flexibility and high technical focus, having
+                        successfully managed
+                        start-ups, restructuring projects, and interim management roles across Europe (Italy, Slovakia,
+                        Germany).</p>
+                </div>
+            </section>
+
+            <section id="experience" class="fade-in-section">
+                <h2 class="section-title" data-i18n="sec_exp_title">Career Journey</h2>
+                <div class="timeline">
+                    <!-- Timeline items (Preserved existing) -->
+                    <div class="job-card left">
+                        <div class="content">
+                            <span class="date">Jan '25 - Present</span>
+                            <div class="role-title"><span data-i18n="role_nig">Coordinator / Site Manager</span> <span
+                                    class="interim-badge">INTERIM</span></div>
+                            <div class="company-name">NIG – Neuruppiner Industrieverlagerungs GmbH (Berlin)</div>
+                            <p data-i18n="desc_nig">Supervising installation of production lines in the automotive
+                                sector.
+                                Managing daily team coordination, client relationships, and material availability.</p>
                         </div>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-</header>
-
-<section class="hero">
-    <!-- Interactive Background -->
-    <canvas id="canvas1"></canvas>
-
-    <div class="container hero-content">
-        <p class="dynamic-greeting"
-            style="font-size: 1.2rem; margin-bottom: 10px; color: var(--accent); font-weight: 600;"></p>
-        <h1 data-i18n="hero_title">Filippo Mario Codecà</h1>
-        <h2><span class="txt-type" data-wait="3000"
-                data-words='["Senior Operations Manager", "Supply Chain Expert", "Crisis Management Specialist", "Lean Six Sigma Leader"]'></span>
-        </h2>
-        <p data-i18n="hero_desc">Driving efficiency in Automotive, Plant Management, and Logistics Optimization
-            across Europe.</p>
-        <div style="display: flex; gap: 15px; justify-content: center;">
-            <a href="#contact" class="btn" data-i18n="btn_contact">Get in Touch</a>
-        </div>
-    </div>
-</section>
-
-<!-- Tech Stack Marquee -->
-<div class="tech-marquee">
-    <div class="tech-track">
-        <div class="tech-item"><i class="fas fa-file-excel"></i> MS Excel Expert</div>
-        <div class="tech-item"><i class="fas fa-cogs"></i> SAP ERP</div>
-        <div class="tech-item"><i class="fas fa-drafting-compass"></i> AutoCAD</div>
-        <div class="tech-item"><i class="fab fa-salesforce"></i> Salesforce</div>
-        <div class="tech-item"><i class="fas fa-database"></i> AS400</div>
-        <div class="tech-item"><i class="fas fa-project-diagram"></i> MS Project</div>
-        <div class="tech-item"><i class="fas fa-chart-line"></i> PowerBI</div>
-        <div class="tech-item"><i class="fas fa-industry"></i> Lean Six Sigma</div>
-        <div class="tech-item"><i class="fas fa-shipping-fast"></i> JIT / JIS</div>
-        <!-- Duplicate for fluid loop -->
-        <div class="tech-item"><i class="fas fa-file-excel"></i> MS Excel Expert</div>
-        <div class="tech-item"><i class="fas fa-cogs"></i> SAP ERP</div>
-        <div class="tech-item"><i class="fas fa-drafting-compass"></i> AutoCAD</div>
-        <div class="tech-item"><i class="fab fa-salesforce"></i> Salesforce</div>
-        <div class="tech-item"><i class="fas fa-database"></i> AS400</div>
-        <div class="tech-item"><i class="fas fa-project-diagram"></i> MS Project</div>
-        <div class="tech-item"><i class="fas fa-chart-line"></i> PowerBI</div>
-        <div class="tech-item"><i class="fas fa-industry"></i> Lean Six Sigma</div>
-        <div class="tech-item"><i class="fas fa-shipping-fast"></i> JIT / JIS</div>
-    </div>
-</div>
-
-<!-- KPI Section (Impact by the Numbers) -->
-<section class="kpi-section fade-in-section">
-    <div class="container">
-        <div class="kpi-grid">
-            <div class="kpi-item" data-tilt>
-                <div class="kpi-number" data-target="15">0</div>
-                <div class="kpi-label">Years Experience</div>
-            </div>
-            <div class="kpi-item" data-tilt>
-                <div class="kpi-number" data-target="120">0</div>
-                <div class="kpi-label">Team Size Managed</div>
-            </div>
-            <div class="kpi-item" data-tilt>
-                <div class="kpi-number" data-target="3">0</div>
-                <div class="kpi-label">Countries</div>
-            </div>
-            <div class="kpi-item" data-tilt>
-                <div class="kpi-number" data-target="8">0</div>
-                <div class="kpi-label">Leadership Roles</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Main Content Grid -->
-<div class="container main-grid">
-
-    <!-- Left Column: Primary Content -->
-    <div class="left-column">
-
-        <section id="about" class="fade-in-section">
-            <h2 class="section-title" data-i18n="sec_about_title">Professional Profile</h2>
-            <div class="about-text">
-                <h3 data-i18n="sec_about_h3" style="color: var(--text-main); margin-bottom: 15px;">Senior Leader in
-                    Manufacturing</h3>
-                <p data-i18n="sec_about_p1">Born in Milan and currently based in Slovakia, I am a seasoned manager
-                    with extensive experience
-                    in the automotive and manufacturing sectors. I specialize in <strong>Plant Management,
-                        Logistics, and Supply Chain optimization</strong>.</p>
-                <br>
-                <p data-i18n="sec_about_p2">My career is defined by flexibility and high technical focus, having
-                    successfully managed
-                    start-ups, restructuring projects, and interim management roles across Europe (Italy, Slovakia,
-                    Germany).</p>
-            </div>
-        </section>
-
-        <section id="experience" class="fade-in-section">
-            <h2 class="section-title" data-i18n="sec_exp_title">Career Journey</h2>
-            <div class="timeline">
-                <!-- Timeline items (Preserved existing) -->
-                <div class="job-card left">
-                    <div class="content">
-                        <span class="date">Jan '25 - Present</span>
-                        <div class="role-title"><span data-i18n="role_nig">Coordinator / Site Manager</span> <span
-                                class="interim-badge">INTERIM</span></div>
-                        <div class="company-name">NIG – Neuruppiner Industrieverlagerungs GmbH (Berlin)</div>
-                        <p data-i18n="desc_nig">Supervising installation of production lines in the automotive sector.
-                            Managing daily team coordination, client relationships, and material availability.</p>
+                    </div>
+                    <div class="job-card right">
+                        <div class="content">
+                            <span class="date">Jul '24 - Nov '24</span>
+                            <div class="role-title"><span data-i18n="role_jlr">Senior Production Leader (T&F)</span>
+                            </div>
+                            <div class="company-name">Jaguar Land Rover (Nitra, Slovakia)</div>
+                            <p data-i18n="desc_jlr">Managed Trim & Final Operation zone (120 people). Drove SQDCPE
+                                metrics,
+                                safety compliance, and Lean manufacturing principles (Kaizen, 5S).</p>
+                        </div>
+                    </div>
+                    <div class="job-card left">
+                        <div class="content">
+                            <span class="date">Jan '23 - Jun '24</span>
+                            <div class="role-title"><span data-i18n="role_opel">Manager Development</span> <span
+                                    class="interim-badge">INTERIM</span></div>
+                            <div class="company-name">Opel Automobile GmbH (Eisenach, Germany)</div>
+                            <p data-i18n="desc_opel">Study of chassis geometry and production process quality for the
+                                new
+                                Opel Grandland BEV project, focusing on "Body Sides".</p>
+                        </div>
+                    </div>
+                    <!-- Reduced length for brevity, keeping key roles -->
+                    <div class="job-card right">
+                        <div class="content">
+                            <span class="date">Sep '21 - Dec '22</span>
+                            <div class="role-title"><span data-i18n="role_ho">Assistant Supervisor</span> <span
+                                    class="interim-badge">INTERIM</span></div>
+                            <div class="company-name">H&O Group I (Bratislava)</div>
+                            <p data-i18n="desc_ho">Managed installation projects for Jeep Ineos Grenadier, Krone
+                                trailers,
+                                and Opel Grandland conveyor systems.</p>
+                        </div>
+                    </div>
+                    <div class="job-card left">
+                        <div class="content">
+                            <span class="date">Oct '21 - Jul '22</span>
+                            <div class="role-title"><span data-i18n="role_phoenix">Supply Chain Director</span> <span
+                                    class="interim-badge">INTERIM</span></div>
+                            <div class="company-name">Phoenix Trade Company</div>
+                            <p data-i18n="desc_phoenix">Optimized biomass supply chain, reduced shipping costs, and
+                                managed
+                                international transport regulations.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="job-card right">
-                    <div class="content">
-                        <span class="date">Jul '24 - Nov '24</span>
-                        <div class="role-title"><span data-i18n="role_jlr">Senior Production Leader (T&F)</span></div>
-                        <div class="company-name">Jaguar Land Rover (Nitra, Slovakia)</div>
-                        <p data-i18n="desc_jlr">Managed Trim & Final Operation zone (120 people). Drove SQDCPE metrics,
-                            safety compliance, and Lean manufacturing principles (Kaizen, 5S).</p>
+            </section>
+
+            <section id="map-section" class="fade-in-section" style="margin-bottom: 0;">
+                <h2 class="section-title" data-i18n="sec_map_title">International Experience</h2>
+                <div id="map" style="height: 400px; border-radius: 12px; box-shadow: var(--shadow); z-index: 1;"></div>
+            </section>
+
+        </div> <!-- End Left Column -->
+
+        <!-- Right Column: Sidebar (Skills, Langs, Contact) -->
+        <aside class="right-column">
+
+            <!-- Hogan Profile -->
+            <div class="sidebar-section" style="text-align: center;">
+                <i class="fas fa-file-alt" style="font-size: 3rem; color: var(--accent); margin-bottom: 15px;"></i>
+                <h3 style="color: var(--text-main); margin-bottom: 10px;">Hogan Assessment</h3>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">View detailed personality
+                    and
+                    leadership profile.</p>
+                <a href="https://drive.google.com/file/d/1DUGsix5StKDtgfsK_0-qDfst1dAJieSa/view?usp=sharing"
+                    target="_blank" class="btn" style="width: 100%;" data-i18n="btn_profile">View Profile</a>
+            </div>
+
+            <!-- Languages -->
+            <div class="sidebar-section">
+                <h2 data-i18n="card_lang">Languages</h2>
+
+                <div class="lang-item">
+                    <div class="lang-header"><span class="lang-name">🇮🇹 Italian</span><span
+                            class="lang-level">Native</span></div>
+                    <div class="progress-bg">
+                        <div class="progress-fill" style="width: 100%;"></div>
                     </div>
                 </div>
-                <div class="job-card left">
-                    <div class="content">
-                        <span class="date">Jan '23 - Jun '24</span>
-                        <div class="role-title"><span data-i18n="role_opel">Manager Development</span> <span
-                                class="interim-badge">INTERIM</span></div>
-                        <div class="company-name">Opel Automobile GmbH (Eisenach, Germany)</div>
-                        <p data-i18n="desc_opel">Study of chassis geometry and production process quality for the new
-                            Opel Grandland BEV project, focusing on "Body Sides".</p>
+                <div class="lang-item">
+                    <div class="lang-header"><span class="lang-name">🇸🇰 Slovak</span><span
+                            class="lang-level">C1</span>
+                    </div>
+                    <div class="progress-bg">
+                        <div class="progress-fill" style="width: 85%;"></div>
                     </div>
                 </div>
-                <!-- Reduced length for brevity, keeping key roles -->
-                <div class="job-card right">
-                    <div class="content">
-                        <span class="date">Sep '21 - Dec '22</span>
-                        <div class="role-title"><span data-i18n="role_ho">Assistant Supervisor</span> <span
-                                class="interim-badge">INTERIM</span></div>
-                        <div class="company-name">H&O Group I (Bratislava)</div>
-                        <p data-i18n="desc_ho">Managed installation projects for Jeep Ineos Grenadier, Krone trailers,
-                            and Opel Grandland conveyor systems.</p>
+                <div class="lang-item">
+                    <div class="lang-header"><span class="lang-name">🇬🇧 English</span><span
+                            class="lang-level">B2</span>
+                    </div>
+                    <div class="progress-bg">
+                        <div class="progress-fill" style="width: 70%;"></div>
                     </div>
                 </div>
-                <div class="job-card left">
-                    <div class="content">
-                        <span class="date">Oct '21 - Jul '22</span>
-                        <div class="role-title"><span data-i18n="role_phoenix">Supply Chain Director</span> <span
-                                class="interim-badge">INTERIM</span></div>
-                        <div class="company-name">Phoenix Trade Company</div>
-                        <p data-i18n="desc_phoenix">Optimized biomass supply chain, reduced shipping costs, and managed
-                            international transport regulations.</p>
+                <div class="lang-item">
+                    <div class="lang-header"><span class="lang-name">🇩🇪 German</span><span
+                            class="lang-level">B2</span>
+                    </div>
+                    <div class="progress-bg">
+                        <div class="progress-fill" style="width: 65%;"></div>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <section id="map-section" class="fade-in-section" style="margin-bottom: 0;">
-            <h2 class="section-title" data-i18n="sec_map_title">International Experience</h2>
-            <div id="map" style="height: 400px; border-radius: 12px; box-shadow: var(--shadow); z-index: 1;"></div>
-        </section>
-
-    </div> <!-- End Left Column -->
-
-    <!-- Right Column: Sidebar (Skills, Langs, Contact) -->
-    <aside class="right-column">
-
-        <!-- Hogan Profile -->
-        <div class="sidebar-section" style="text-align: center;">
-            <i class="fas fa-file-alt" style="font-size: 3rem; color: var(--accent); margin-bottom: 15px;"></i>
-            <h3 style="color: var(--text-main); margin-bottom: 10px;">Hogan Assessment</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">View detailed personality and
-                leadership profile.</p>
-            <a href="https://drive.google.com/file/d/1DUGsix5StKDtgfsK_0-qDfst1dAJieSa/view?usp=sharing" target="_blank"
-                class="btn" style="width: 100%;" data-i18n="btn_profile">View Profile</a>
-        </div>
-
-        <!-- Languages -->
-        <div class="sidebar-section">
-            <h2 data-i18n="card_lang">Languages</h2>
-
-            <div class="lang-item">
-                <div class="lang-header"><span class="lang-name">🇮🇹 Italian</span><span
-                        class="lang-level">Native</span></div>
-                <div class="progress-bg">
-                    <div class="progress-fill" style="width: 100%;"></div>
+            <!-- Skills -->
+            <div class="sidebar-section" id="skills">
+                <h2 data-i18n="nav_skills">Skills</h2>
+                <div class="skills-container" style="display: flex; flex-wrap: wrap; gap: 8px;">
+                    <div class="skill-tag" data-category="management">Supply Chain Mgmt</div>
+                    <div class="skill-tag" data-category="management">Plant Operations</div>
+                    <div class="skill-tag" data-category="management">Lean / Kaizen / 5S</div>
+                    <div class="skill-tag" data-category="management">Crisis Management</div>
+                    <div class="skill-tag" data-category="industry">Automotive Industry</div>
+                    <div class="skill-tag" data-category="technical">Logistics</div>
+                    <div class="skill-tag" data-category="technical">SAP / AS400</div>
+                    <div class="skill-tag" data-category="technical">ISO 9001 / IATF</div>
                 </div>
             </div>
-            <div class="lang-item">
-                <div class="lang-header"><span class="lang-name">🇸🇰 Slovak</span><span class="lang-level">C1</span>
-                </div>
-                <div class="progress-bg">
-                    <div class="progress-fill" style="width: 85%;"></div>
+
+            <!-- Certifications Badge Row (Compact Sidebar Ver) -->
+            <div class="sidebar-section">
+                <h2>Certifications</h2>
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <div style="display: flex; align-items: center; gap: 10px; color: var(--text-main);">
+                        <i class="fas fa-certificate" style="color: var(--accent);"></i> Lean Six Sigma Black Belt
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px; color: var(--text-main);">
+                        <i class="fas fa-shield-alt" style="color: var(--accent);"></i> ISO 9001 Lead Auditor
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px; color: var(--text-main);">
+                        <i class="fas fa-check-circle" style="color: var(--accent);"></i> IATF 16949 Specialist
+                    </div>
                 </div>
             </div>
-            <div class="lang-item">
-                <div class="lang-header"><span class="lang-name">🇬🇧 English</span><span class="lang-level">B2</span>
-                </div>
-                <div class="progress-bg">
-                    <div class="progress-fill" style="width: 70%;"></div>
+
+            <!-- Contact Short -->
+            <div class="sidebar-section" id="contact">
+                <h2 data-i18n="nav_contact">Contact</h2>
+                <div style="font-size: 0.9rem; display: flex; flex-direction: column; gap: 12px;">
+                    <a href="mailto:filippo.codeca@gmail.com" class="contact-item"><i class="fas fa-envelope"
+                            style="width: 20px;"></i> filippo.codeca@gmail.com</a>
+                    <a href="tel:+421907899309" class="contact-item"><i class="fas fa-phone" style="width: 20px;"></i>
+                        +421
+                        907 899 309</a>
+                    <span class="contact-item"><i class="fas fa-map-marker-alt" style="width: 20px;"></i> Levice,
+                        Slovakia</span>
+                    <div class="social-icons" style="margin-top: 10px; justify-content: flex-start;">
+                        <a href="https://www.linkedin.com/in/filippomariocodeca" target="_blank"><i
+                                class="fab fa-linkedin-in"></i></a>
+                    </div>
                 </div>
             </div>
-            <div class="lang-item">
-                <div class="lang-header"><span class="lang-name">🇩🇪 German</span><span class="lang-level">B2</span>
-                </div>
-                <div class="progress-bg">
-                    <div class="progress-fill" style="width: 65%;"></div>
-                </div>
-            </div>
-        </div>
 
-        <!-- Skills -->
-        <div class="sidebar-section" id="skills">
-            <h2 data-i18n="nav_skills">Skills</h2>
-            <div class="skills-container" style="display: flex; flex-wrap: wrap; gap: 8px;">
-                <div class="skill-tag" data-category="management">Supply Chain Mgmt</div>
-                <div class="skill-tag" data-category="management">Plant Operations</div>
-                <div class="skill-tag" data-category="management">Lean / Kaizen / 5S</div>
-                <div class="skill-tag" data-category="management">Crisis Management</div>
-                <div class="skill-tag" data-category="industry">Automotive Industry</div>
-                <div class="skill-tag" data-category="technical">Logistics</div>
-                <div class="skill-tag" data-category="technical">SAP / AS400</div>
-                <div class="skill-tag" data-category="technical">ISO 9001 / IATF</div>
-            </div>
-        </div>
+        </aside> <!-- End Right Column -->
 
-        <!-- Certifications Badge Row (Compact Sidebar Ver) -->
-        <div class="sidebar-section">
-            <h2>Certifications</h2>
-            <div style="display: flex; flex-direction: column; gap: 10px;">
-                <div style="display: flex; align-items: center; gap: 10px; color: var(--text-main);">
-                    <i class="fas fa-certificate" style="color: var(--accent);"></i> Lean Six Sigma Black Belt
-                </div>
-                <div style="display: flex; align-items: center; gap: 10px; color: var(--text-main);">
-                    <i class="fas fa-shield-alt" style="color: var(--accent);"></i> ISO 9001 Lead Auditor
-                </div>
-                <div style="display: flex; align-items: center; gap: 10px; color: var(--text-main);">
-                    <i class="fas fa-check-circle" style="color: var(--accent);"></i> IATF 16949 Specialist
-                </div>
-            </div>
-        </div>
-
-        <!-- Contact Short -->
-        <div class="sidebar-section" id="contact">
-            <h2 data-i18n="nav_contact">Contact</h2>
-            <div style="font-size: 0.9rem; display: flex; flex-direction: column; gap: 12px;">
-                <a href="mailto:filippo.codeca@gmail.com" class="contact-item"><i class="fas fa-envelope"
-                        style="width: 20px;"></i> filippo.codeca@gmail.com</a>
-                <a href="tel:+421907899309" class="contact-item"><i class="fas fa-phone" style="width: 20px;"></i> +421
-                    907 899 309</a>
-                <span class="contact-item"><i class="fas fa-map-marker-alt" style="width: 20px;"></i> Levice,
-                    Slovakia</span>
-                <div class="social-icons" style="margin-top: 10px; justify-content: flex-start;">
-                    <a href="https://www.linkedin.com/in/filippomariocodeca" target="_blank"><i
-                            class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-        </div>
-
-    </aside> <!-- End Right Column -->
-
-</div> <!-- End Grid -->
+    </div> <!-- End Grid -->
 
 
-<!-- JavaScript Link -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-<script src="translations.js"></script>
-<script src="script.js"></script>
-<script>
-    // Init Tilt
-    VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
-        max: 15,
-        speed: 400,
-        glare: true,
-        "max-glare": 0.2
-    });
-</script>
+    <!-- JavaScript Links with Subresource Integrity (SRI) -->
+    <!-- VanillaTilt with SRI hash for security -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"
+        integrity="sha512-SttpKhJqONuBVxbRcuH0wezjuX+BoFoli0yPsnrAADcHsQMW8rkR84ItFHGIkPvhnlRnE2FaifDOUw+EltbuHg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Leaflet JS with SRI hash -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
+    <script src="translations.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Init Tilt
+        VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
+            max: 15,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.2
+        });
+    </script>
 </body>
 
 </html>
